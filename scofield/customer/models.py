@@ -30,6 +30,9 @@ class Phonenumber(models.Model):
     phone = models.CharField('Phone Number', blank=True, max_length=30)
     primary = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = 'Phone Number'
+        verbose_name_plural = 'Phone Numbers'
 
 class Address(models.Model):
     """
@@ -45,3 +48,6 @@ class Address(models.Model):
     default_shipping = models.BooleanField('Default Shipping Address', default=False)
     default_billing = models.BooleanField('Default Billing Address', default=False)
 
+    class Meta:
+        verbose_name = 'Address'
+        verbose_name_plural = 'Addresses'
