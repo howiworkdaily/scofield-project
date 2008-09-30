@@ -19,7 +19,7 @@ class Tax(models.Model):
     """
     Tax Percentage
     """
-    taxClass = models.ForeignKey(TaxClass, verbose_name=_('Tax Class'))
+    taxClass = models.ForeignKey(TaxClass)
     percentage = models.DecimalField(max_digits=7, decimal_places=2)
 
     def _display_percentage(self):
