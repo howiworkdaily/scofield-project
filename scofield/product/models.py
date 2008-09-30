@@ -20,7 +20,7 @@ class ProductModel(models.Model):
 
 class Product(ProductModel):
     """
-    Product Model
+    Product Model extends the abstract ProductModel
     """
 
     name = models.CharField(max_length=200, null=False, blank=False, help_text='Product Name')
