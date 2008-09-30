@@ -42,3 +42,18 @@ class Price(models.Model):
     product = models.ForeignKey(Product)
     price = models.DecimalField(max_digits=14, decimal_places=2)
 
+
+class ProductLiterature(models.Model):
+    """
+    Any literature a product may have
+    """
+    product = models.ForeignKey(Product)
+
+
+class ProductImage(models.Model):
+    """
+    Images for a product
+    """
+
+    product = models.ForeignKey(Product)
+
