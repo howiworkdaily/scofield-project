@@ -3,6 +3,7 @@ from datetime import datetime
 
 from scofield.category.models import *
 from scofield.manufacturer.models import Manufacturer
+from scofield.tax.models import TaxClass
 
 
 class ProductModel(models.Model):
@@ -31,6 +32,8 @@ class Product(ProductModel):
     taxable = models.BooleanField(default=False)
     taxClass = models.ForeignKey(TaxClass, blank=True, null=True, help_text='If taxable, choose the type of tax')
     published = models.BooleanField(default=True)
+    related_products = models.ManyToManyField('self', blank=True, null=True, related_name='related_products')
+
 
 
 class Price(models.Model):
@@ -47,6 +50,7 @@ class ProductLiterature(models.Model):
     """
     Any literature a product may have
     """
+
     product = models.ForeignKey(Product)
 
 
