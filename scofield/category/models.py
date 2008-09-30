@@ -11,3 +11,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=210, null=False, blank=False)
     parent = models.ForeignKey('self', blank=True, null=True, related_name='child')
 
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
+
