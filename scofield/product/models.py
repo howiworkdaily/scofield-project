@@ -10,7 +10,6 @@ class ProductModel(models.Model):
     """
     Base class for products
     """
-
     #timestamps
     date_added = models.DateTimeField(default=datetime.now)
     date_updated = models.DateTimeField(default=datetime.now)
@@ -29,6 +28,9 @@ class Product(ProductModel):
     category = models.ManyToManyField(Category, blank=False, null=False)
     manufacturer = models.ForeignKey(Manufacturer, blank=True, null=True)
     msrp = models.DecimalField(max_digits=14, decimal_places=2)
+    taxable = models.BooleanField(default=False)
+    taxClass = models.ForeignKey(TaxClass, blank=True, null=True, help_text='If taxable, choose the type of tax')
+    published = models.BooleanField(default=True)
 
 
 class Price(models.Model):
