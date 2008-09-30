@@ -1,7 +1,7 @@
 from django.db import models
 
-from category.models import *
-from manufacturer.models import Manufacturer
+from scofield.category.models import *
+from scofield.manufacturer.models import Manufacturer
 
 
 class Product(models.Model):
