@@ -14,7 +14,7 @@ class ProductModel(models.Model):
 
     name = models.CharField(max_length=200, null=False, blank=False, help_text='Product Name')
     slug = models.SlugField(max_length=210, null=False, blank=False, help_text='Used for URLs, auto-generated from name if blank')
-    sku = models.CharField(max_length=100, null=True, blank=True)
+    sku = models.CharField(max_length=100, null=True, blank=True, help_text='Product SKU or Part Number')
 
     #timestamps
     date_added = models.DateTimeField(default=datetime.now)
@@ -34,6 +34,7 @@ class Product(ProductModel):
     taxable = models.BooleanField(default=False)
     taxClass = models.ForeignKey(TaxClass, blank=True, null=True, help_text='If taxable, choose the type of tax')
     published = models.BooleanField(default=True)
+    is_featured = models.BooleanField('Is Featured Product', default=False)
     related_products = models.ManyToManyField('self', blank=True, null=True, related_name='related_products')
 
 
