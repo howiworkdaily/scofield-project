@@ -18,3 +18,5 @@ class CartItem(models.Model):
     cart = models.ForeignKey(Cart)
     product = models.ForeignKey(Product)
     quantity = models.IntegerField()
+    date_added = models.DateTimeField(default=datetime.now)
+

@@ -86,4 +86,5 @@ INSTALLED_APPS = (
     'scofield.cart',
     'scofield.wishlist',
     'scofield.customer',
+    'scofield.account',
 )
