@@ -91,6 +91,6 @@ INSTALLED_APPS = (
     # external apps
     'threadedcomments',
     'registration',
+    'pagination',
+    'tagging',
 )
-
-#ACCOUNT_ACTIVATION_DAYS = '3'

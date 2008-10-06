@@ -5,6 +5,17 @@ from utils import bad_or_missing
 
 from product.models import *
 
+def home(request, template_name="home_page.html"):
+    """
+    Home page featured products
+    """
+
+    product = Product.objects.get(published=True, is_featured=True)
+
+    return render_to_response(template_name, {
+        "product": product,
+    }, context_instance=RequestContext(request))
+
 def get_product(request, product_slug, template_name="product/details.html"):
     """
     Product Detail View
