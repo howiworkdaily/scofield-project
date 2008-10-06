@@ -1,4 +1,4 @@
-from scofield.tax.models import *
+from tax.models import *
 from django.contrib import admin
 
 

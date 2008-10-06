@@ -1,9 +1,9 @@
 from django.db import models
 from datetime import datetime
 
-from scofield.category.models import *
-from scofield.manufacturer.models import Manufacturer
-from scofield.tax.models import TaxClass
+from category.models import *
+from manufacturer.models import Manufacturer
+from tax.models import TaxClass
 
 
 class ProductModel(models.Model):

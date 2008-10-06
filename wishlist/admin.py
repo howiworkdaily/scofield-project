@@ -1,4 +1,4 @@
-from scofield.wishlist.models import *
+from wishlist.models import *
 from django.contrib import admin
 
 

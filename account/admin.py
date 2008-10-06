@@ -1,4 +1,4 @@
-from scofield.account.models import *
+from account.models import *
 from django.contrib import admin
 
 admin.site.register(Order)

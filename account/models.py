@@ -2,8 +2,8 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-from scofield.product.models import Product
-from scofield.customer.models import *
+from product.models import Product
+from customer.models import *
 
 class Order(models.Model):
 

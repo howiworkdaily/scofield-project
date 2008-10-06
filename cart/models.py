@@ -3,7 +3,7 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 
-from scofield.product.models import Product
+from product.models import Product
 
 
 class Cart(models.Model):

@@ -1,4 +1,4 @@
-from scofield.manufacturer.models import *
+from manufacturer.models import *
 from django.contrib import admin
 
 
