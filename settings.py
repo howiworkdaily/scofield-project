@@ -87,4 +87,7 @@ INSTALLED_APPS = (
     'wishlist',
     'customer',
     'account',
+
+    # external apps
+    'threadedcomments',
 )

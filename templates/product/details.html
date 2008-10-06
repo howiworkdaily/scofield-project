@@ -1,3 +1,5 @@
+{% load threadedcommentstags %}
+
 {% block content %}
     <h2>{{ product.name }}</h2>
     <p>{{ product.description }}</p>
@@ -5,8 +7,28 @@
     MSRP: {{ product.msrp }}<br />
     Price: {{ product.get_price }}<br />
 
+    <h3>Add purchase form here</h3>
+
     <h2>Related Products</h2>
     {% for related in related %}
     <a href="{{ related.get_absolute_url }}">{{ related.name }}</a>: {{ related.get_price }}<br />
     {% endfor %}
+
+
+    <h3>Comments on {{ product.name }}:</h3>
+    {% get_free_threaded_comment_tree for product as tree %}
+    {% for comment in tree %}
+        <div style="margin-left: {{ comment.depth }}em;" class="comment">
+            <a href="{{ comment.website }}">{{ comment.name }}</a> said:<br/>
+            {% auto_transform_markup comment %}
+        </div>
+    {% endfor %}
+    <p>Reply to Original:</p>
+    <form method="POST" action="{% get_free_comment_url product %}">
+        <ul>
+            {% get_free_threaded_comment_form as form %}
+            {{ form.as_ul }}
+            <li><input type="submit" value="Submit Comment" /></li>
+        </ul>
+    </form>
 {% endblock %}
