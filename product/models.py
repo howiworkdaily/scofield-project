@@ -1,6 +1,7 @@
 from django.db import models
 from django.core import urlresolvers
 from datetime import datetime
+from django.utils._decimal import Decimal
 
 from category.models import *
 from manufacturer.models import Manufacturer
@@ -43,10 +44,15 @@ class Product(ProductModel):
         return self.name
 
     def get_absolute_url(self):
+        """ return a reversable url """
         return urlresolvers.reverse('scofield_product',
             kwargs={'product_slug': self.slug})
 
-    
+    def get_price(self):
+        """ Return the product price """
+        price = Price.objects.filter(product__id=self.id)[0]
+        if price:
+            return price
 
 
 class Price(models.Model):
@@ -57,6 +63,9 @@ class Price(models.Model):
 
     product = models.ForeignKey(Product)
     price = models.DecimalField(max_digits=14, decimal_places=2)
+
+    def __unicode__(self):
+        return unicode(self.price)
 
 
 class ProductLiterature(models.Model):

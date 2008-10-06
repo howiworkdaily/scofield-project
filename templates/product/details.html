@@ -1,6 +1,12 @@
 {% block content %}
-    {{ product.name }}
+    <h2>{{ product.name }}</h2>
     <p>{{ product.description }}</p>
 
-    {{ product.msrp }}
+    MSRP: {{ product.msrp }}<br />
+    Price: {{ product.get_price }}<br />
+
+    <h2>Related Products</h2>
+    {% for related in related %}
+    {{ related.name }}: {{ related.get_price }}<br />
+    {% endfor %}
 {% endblock %}
