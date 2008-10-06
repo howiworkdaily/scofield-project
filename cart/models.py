@@ -15,6 +15,10 @@ class Cart(models.Model):
 
 
 class CartItem(models.Model):
+    """
+    Products a customer has added to their cart
+    """
+
     cart = models.ForeignKey(Cart)
     product = models.ForeignKey(Product)
     quantity = models.IntegerField()
