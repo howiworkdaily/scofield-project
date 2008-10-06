@@ -13,6 +13,8 @@ class Category(models.Model):
     sortorder = models.IntegerField(default=0, help_text='set the sort order')
     published = models.BooleanField(default=1)
 
+    def get_products(self):
+        return self.product_set.filter(published=True)
 
     class Meta:
         verbose_name = "Category"

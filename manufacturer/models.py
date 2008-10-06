@@ -13,3 +13,7 @@ class Manufacturer(models.Model):
     published = models.BooleanField(default=1)
 
 
+    def get_products(self):
+        return self.product_set.filter(published=True)
+
+

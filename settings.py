@@ -90,4 +90,7 @@ INSTALLED_APPS = (
 
     # external apps
     'threadedcomments',
+    'registration',
 )
+
+#ACCOUNT_ACTIVATION_DAYS = '3'
