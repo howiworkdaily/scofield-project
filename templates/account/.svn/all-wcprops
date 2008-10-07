@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account
+END
+timezone_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/timezone_change.html
+END
+password_reset_message.txt
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/password_reset_message.txt
+END
+password_reset.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/password_reset.html
+END
+other_services.html
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/other_services.html
+END
+signup.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/signup.html
+END
+email.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/email.html
+END
+password_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/password_change.html
+END
+login.html
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/login.html
+END
+language_change.html
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/language_change.html
+END
+logout.html
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/logout.html
+END
+password_reset_done.html
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/password_reset_done.html
+END
+base.html
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/!svn/ver/990/trunk/projects/complete_project/templates/account/base.html
+END

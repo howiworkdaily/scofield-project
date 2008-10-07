@@ -1,6 +1,4 @@
-from account.models import *
 from django.contrib import admin
+from account.models import Account
 
-admin.site.register(Order)
-admin.site.register(OrderItem)
-admin.site.register(Payment)
+admin.site.register(Account)

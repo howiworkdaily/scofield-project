@@ -1,0 +1,14 @@
+{% extends "site_base.html" %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url acct_email %}">{% trans "E-Mail Addresses" %}</a></li>
+            <li><a href="{% url openid_assoc %}">{% trans "OpenID Associations" %}</a></li>
+            <li><a href="{% url acct_passwd %}">{% trans "Change Password" %}</a></li>
+        </ul>
+{% else %}
+        &nbsp; {# need this to give subnav some height when empty #}
+        
+    {% endif %}
+{% endblock %}
