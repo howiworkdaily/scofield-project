@@ -1,4 +1,5 @@
 from django.db import models
+from django.core import urlresolvers
 
 
 class Manufacturer(models.Model):
@@ -15,5 +16,10 @@ class Manufacturer(models.Model):
 
     def get_products(self):
         return self.product_set.filter(published=True)
+
+    def get_absolute_url(self):
+        """ return a reversable url """
+        return urlresolvers.reverse('scofield_manufacturer',
+            kwargs={'manufacturer_slug': self.slug})
 
 

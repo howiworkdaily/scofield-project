@@ -57,6 +57,14 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "core.context_processors.dynamic_menus",
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,6 +95,7 @@ INSTALLED_APPS = (
     'wishlist',
     'customer',
     'account',
+    'core',
 
     # external apps
     'threadedcomments',

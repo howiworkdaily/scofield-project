@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block menu %}
+test
+    <ul>
+        {% for manufacturer in manufacturers %}
+            <li>{{ manufacturer.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
