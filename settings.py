@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'wishlist',
     'customer',
     'account',
+    'order',
     'core',
 
     # external apps
