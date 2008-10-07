@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class Account(models.Model):
     
-    user = models.ForeignKey(User, unique=True, verbose_name=_('user'))
+    user = models.ForeignKey(User, unique=True, verbose_name='user')
     
     
     def __unicode__(self):

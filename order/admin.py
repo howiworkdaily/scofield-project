@@ -1,4 +1,4 @@
-from account.models import *
+from order.models import *
 from django.contrib import admin
 
 admin.site.register(Order)

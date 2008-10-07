@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'core',
 
     # external apps
+    'emailconfirmation',
     'threadedcomments',
     'registration',
     'pagination',

@@ -14,10 +14,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
 from emailconfirmation.models import EmailAddress
-from friends.models import JoinInvitation
 from account.models import Account
 
-from timezones.forms import TimeZoneField
 
 alnum_re = re.compile(r'^\w+$')
 
@@ -191,67 +189,3 @@ class ResetPasswordForm(forms.Form):
             send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email], priority="high")
         return self.cleaned_data["email"]
 
-class ChangeTimezoneForm(AccountForm):
-
-    timezone = TimeZoneField(label=_("Timezone"), required=True)
-
-    def __init__(self, *args, **kwargs):
-        super(ChangeTimezoneForm, self).__init__(*args, **kwargs)
-        self.initial.update({"timezone": self.account.timezone})
-
-    def save(self):
-        self.account.timezone = self.cleaned_data["timezone"]
-        self.account.save()
-        self.user.message_set.create(message=ugettext(u"Timezone successfully updated."))
-
-class ChangeLanguageForm(AccountForm):
-
-    language = forms.ChoiceField(label=_("Language"), required=True, choices=settings.LANGUAGES)
-
-    def __init__(self, *args, **kwargs):
-        super(ChangeLanguageForm, self).__init__(*args, **kwargs)
-        self.initial.update({"language": self.account.language})
-
-    def save(self):
-        self.account.language = self.cleaned_data["language"]
-        self.account.save()
-        self.user.message_set.create(message=ugettext(u"Language successfully updated."))
-
-
-# @@@ these should somehow be moved out of account or at least out of this module
-
-from account.models import OtherServiceInfo, other_service, update_other_services
-
-class TwitterForm(UserForm):
-    username = forms.CharField(label=_("Username"), required=True)
-    password = forms.CharField(label=_("Password"), required=True,
-                               widget=forms.PasswordInput(render_value=False))
-
-    def __init__(self, *args, **kwargs):
-        super(TwitterForm, self).__init__(*args, **kwargs)
-        self.initial.update({"username": other_service(self.user, "twitter_user")})
-
-    def save(self):
-        from zwitschern.utils import get_twitter_password
-        update_other_services(self.user,
-            twitter_user = self.cleaned_data['username'],
-            twitter_password = get_twitter_password(settings.SECRET_KEY, self.cleaned_data['password']),
-        )
-        self.user.message_set.create(message=ugettext(u"Successfully authenticated."))
-
-class PownceForm(UserForm):
-    usernamep = forms.CharField(label=_("Username"), required=True)
-    passwordp = forms.CharField(label=_("Password"), required=True,
-                               widget=forms.PasswordInput(render_value=False))
-                               
-    def __init__(self, *args, **kwargs):
-        super(PownceForm, self).__init__(*args, **kwargs)
-        self.initial.update({"usernamep": other_service(self.user, "pownce_user")})
-        
-    def save(self):
-        from zwitschern.pownce_utils import get_pownce_password
-        update_other_service(self.user,
-            pownce_user = self.cleaned_data['usernamep'],
-            pownce_password = get_pownce_password(settings.SECRET_KEY, self.cleaned_data['passwordp']),
-        )
-        self.user.message_set.create(message=ugettext(u"Successfully authenticated."))

@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
     url(r'^$', 'product.views.home', name='scofield_home'),
+    (r'account/', include('account.urls')),
     (r'product/', include('product.urls')),
     (r'category/', include('category.urls')),
     (r'manufacturer/', include('manufacturer.urls')),

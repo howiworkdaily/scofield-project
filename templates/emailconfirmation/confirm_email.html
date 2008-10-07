@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    {% if email_address %}
+        <h1>Email Confirmed</h1>
+        
+        <p>You have confirmed that {{ email }} is an email address for user '{{ user }}'.</p>
+    {% else %}
+        <p>Invalid confirmation key.</p>
+    {% endif %}
+{% endblock %}
