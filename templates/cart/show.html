@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load threadedcommentstags %}
+
+{% block content %}
+<h2>Shopping Cart</h2>
+    {% if product %}
+    <table width="500px">
+        <th align="left">Model</th>
+        <th align="left">Product</th>
+        <th>Quantity</th>
+        <th align="left">Price</th>
+        {% for product in product %}
+        <tr>
+            <td align="left">{{ product.get_sku }}</td>
+            <td align="left">{{ product.name }}</td>
+            <td align="center">{{ product.quantity }}</td>
+            <td align="left">{{ product.get_price }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="2"></td>
+            <td>Total</td>
+            <td>{{ total }}</td>
+        </tr>
+    </table>
+    {% else %}
+        Your cart is empty
+    {% endif %}
+
+{% endblock %}
+

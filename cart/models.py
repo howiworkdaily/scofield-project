@@ -1,26 +1,23 @@
 from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
-
-
-from product.models import Product
-
-
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
+ 
 class Cart(models.Model):
     """
-    A cart to store cart items
+    Simple cart object
     """
-    date_created = models.DateTimeField(default=datetime.now)
-    customer = models.ForeignKey(User, blank=True, null=True, verbose_name='Customer')
-
-
+    user = models.ForeignKey(User, null=True)
+    date_added = models.DateTimeField(default=datetime.now)
+ 
 class CartItem(models.Model):
     """
-    Products a customer has added to their cart
+    Association between a cart and a product
     """
-
     cart = models.ForeignKey(Cart)
-    product = models.ForeignKey(Product)
+    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType)
+    content_object = generic.GenericForeignKey()
     quantity = models.IntegerField()
-    date_added = models.DateTimeField(default=datetime.now)
 

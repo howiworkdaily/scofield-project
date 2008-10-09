@@ -15,7 +15,7 @@ class ProductModel(models.Model):
     """
 
     name = models.CharField(max_length=200, null=False, blank=False, help_text='Product Name')
-    slug = models.SlugField(max_length=210, null=False, blank=False, help_text='Used for URLs, auto-generated from name if blank')
+    slug = models.SlugField(max_length=210, null=False, blank=False, help_text='Used for URLs, auto-generated from name if blank', unique=True)
     sku = models.CharField(max_length=100, null=True, blank=True, help_text='Product SKU or Part Number')
     description = models.TextField()
     category = models.ManyToManyField(Category, blank=False, null=False)
@@ -53,6 +53,12 @@ class Product(ProductModel):
         price = Price.objects.filter(product__id=self.id)[0]
         if price:
             return price
+
+    def get_sku(self):
+        """
+        returns the product sku
+        """
+        return self.sku
 
 
 class Price(models.Model):

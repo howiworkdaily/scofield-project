@@ -10,7 +10,7 @@ def home(request, template_name="home_page.html"):
     Home page featured products
     """
 
-    product = Product.objects.get(published=True, is_featured=True)
+    product = Product.objects.filter(published=True, is_featured=True)
 
     return render_to_response(template_name, {
         "product": product,
@@ -20,7 +20,6 @@ def get_product(request, product_slug, template_name="product/details.html"):
     """
     Product Detail View
     """
-
     try:
         product = Product.objects.get(published=True, slug=product_slug)
     except Product.DoesNotExist:

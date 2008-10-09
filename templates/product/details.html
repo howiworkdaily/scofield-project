@@ -9,7 +9,12 @@
     MSRP: {{ product.msrp }}<br />
     Price: {{ product.get_price }}<br />
 
-    <h3>Add purchase form here</h3>
+    <h3>Add To Cart</h3>
+    <form method="POST" action="{% url add_to_cart %}" id="add_to_cart">
+        <input type="hidden" name="product" value="{{ product.slug }}" />
+        <label>Quantity <input type="text" size="2" name="quantity" value="1" /></label>
+        <input type="submit" value="Add to Cart" />
+    </form>
 
     <h2>Related Products</h2>
     {% for related in related %}
