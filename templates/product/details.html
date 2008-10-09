@@ -7,6 +7,9 @@
 
 {% block content %}
     <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    
+    <h3>Product Images</h3>
     {% for image in images %}
         {% thumbnail image.image 50x50 bw,autocrop as thumb %}
         <img src="{{ thumb }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
@@ -16,8 +19,6 @@
     {% for doc in docs %}
         <a href="{{ MEDIA_URL }}{{ doc.document }}">{{ doc.document }}</a>
     {% endfor %}
-
-    <p>{{ product.description }}</p>
 
 
     MSRP: {{ product.msrp|currency }}<br />
