@@ -27,9 +27,11 @@ def get_product(request, product_slug, template_name="product/details.html"):
 
     related = product.related_products.all()
     images = ProductImage.objects.filter(product=product.id)
+    docs = ProductLiterature.objects.filter(product=product.id)
 
     return render_to_response(template_name, {
         "product": product, 
         "related": related,
         "images": images,
+        "docs": docs,
     }, context_instance=RequestContext(request))

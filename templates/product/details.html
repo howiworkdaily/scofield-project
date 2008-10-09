@@ -11,7 +11,14 @@
         {% thumbnail image.image 50x50 bw,autocrop as thumb %}
         <img src="{{ thumb }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
     {% endfor %}
+
+    <h3>Product Literature</h3>
+    {% for doc in docs %}
+        <a href="{{ MEDIA_URL }}{{ doc.document }}">{{ doc.document }}</a>
+    {% endfor %}
+
     <p>{{ product.description }}</p>
+
 
     MSRP: {{ product.msrp|currency }}<br />
     Price: {{ product.get_price|currency }}<br />
