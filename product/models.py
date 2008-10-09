@@ -80,7 +80,8 @@ class ProductLiterature(models.Model):
     """
 
     product = models.ForeignKey(Product)
-
+    document = models.FileField(upload_to='docs/')
+    date_added = models.DateTimeField(default=datetime.now)
 
 class ProductImage(models.Model):
     """
@@ -88,4 +89,5 @@ class ProductImage(models.Model):
     """
 
     product = models.ForeignKey(Product)
-
+    image = models.ImageField(upload_to='images/')
+    date_added = models.DateTimeField(default=datetime.now)
