@@ -2,10 +2,15 @@
 
 {% load threadedcommentstags %}
 {% load scofield_tags %}
+{% load thumbnail %}
 
 
 {% block content %}
     <h2>{{ product.name }}</h2>
+    {% for image in images %}
+        {% thumbnail image.image 50x50 bw,autocrop as thumb %}
+        <img src="{{ thumb }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+    {% endfor %}
     <p>{{ product.description }}</p>
 
     MSRP: {{ product.msrp|currency }}<br />

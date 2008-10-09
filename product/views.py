@@ -26,8 +26,10 @@ def get_product(request, product_slug, template_name="product/details.html"):
         return bad_or_missing(request, 'The product or page you have requested is not in the catalog.')
 
     related = product.related_products.all()
+    images = ProductImage.objects.filter(product=product.id)
 
     return render_to_response(template_name, {
         "product": product, 
         "related": related,
+        "images": images,
     }, context_instance=RequestContext(request))
