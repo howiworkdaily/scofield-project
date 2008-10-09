@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
 {% load threadedcommentstags %}
+{% load scofield_tags %}
+
 
 {% block content %}
     <h2>{{ product.name }}</h2>
     <p>{{ product.description }}</p>
 
-    MSRP: {{ product.msrp }}<br />
-    Price: {{ product.get_price }}<br />
+    MSRP: {{ product.msrp|currency }}<br />
+    Price: {{ product.get_price|currency }}<br />
 
     <h3>Add To Cart</h3>
     <form method="POST" action="{% url add_to_cart %}" id="add_to_cart">
@@ -18,7 +20,7 @@
 
     <h2>Related Products</h2>
     {% for related in related %}
-    <a href="{{ related.get_absolute_url }}">{{ related.name }}</a>: {{ related.get_price }}<br />
+    <a href="{{ related.get_absolute_url }}">{{ related.name }}</a>: {{ related.get_price|currency }}<br />
     {% endfor %}
 
 

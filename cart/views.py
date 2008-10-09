@@ -6,10 +6,9 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from utils import bad_or_missing
 from django.contrib.auth.models import User
-from django.utils._decimal import Decimal
 from product.models import *
 from cart.models import *
-
+import decimal
 
 def add(request):
     """
@@ -63,7 +62,6 @@ def show(request, template_name="cart/show.html"):
             price = Price.objects.get(product=prod.id)
             prod.quantity = c.quantity
             product.append(prod)
-            print price
             total = total + (c.quantity * price.price)
 
     else:

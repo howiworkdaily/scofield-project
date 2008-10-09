@@ -50,9 +50,9 @@ class Product(ProductModel):
 
     def get_price(self):
         """ Return the product price """
-        price = Price.objects.filter(product__id=self.id)[0]
-        if price:
-            return price
+        priceobj = Price.objects.get(product__id=self.id)
+        if priceobj:
+            return priceobj.price
 
     def get_sku(self):
         """

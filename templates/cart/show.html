@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load threadedcommentstags %}
+{% load scofield_tags %}
 
 {% block content %}
 <h2>Shopping Cart</h2>
@@ -15,13 +15,13 @@
             <td align="left">{{ product.get_sku }}</td>
             <td align="left">{{ product.name }}</td>
             <td align="center">{{ product.quantity }}</td>
-            <td align="left">{{ product.get_price }}</td>
+            <td align="left">{{ product.get_price|currency }}</td>
         </tr>
         {% endfor %}
         <tr>
             <td colspan="2"></td>
             <td>Total</td>
-            <td>{{ total }}</td>
+            <td>{{ total|currency }}</td>
         </tr>
     </table>
     {% else %}
