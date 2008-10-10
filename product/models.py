@@ -73,13 +73,12 @@ class Price(models.Model):
     def __unicode__(self):
         return unicode(self.price)
 
-
 class ProductLiterature(models.Model):
     """
     Any literature a product may have
     """
-
     product = models.ForeignKey(Product)
+    title = models.CharField(max_length=100, blank=False, null=False, help_text='short title for document')
     document = models.FileField(upload_to='docs/')
     date_added = models.DateTimeField(default=datetime.now)
 

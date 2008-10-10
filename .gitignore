@@ -5,3 +5,4 @@
 *.swp
 site_media/images/
 site_media/docs/
+localsettings.py

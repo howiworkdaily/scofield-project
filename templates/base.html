@@ -8,12 +8,14 @@
 </head>
 
 <body>
+    <div id="page" style="margin-top: 40px;">
     <a href="/">Home</a> | 
     {% if user.is_authenticated %}
         <a href="{% url acct_email %}">Account</a> | {% if user.is_staff %}<a href="/admin/">Admin</a> | {% endif %}<a href="{% url acct_logout %}">Logout</a>
     {% else %}
         <a href="{% url acct_login %}">Login</a> or <a href="{% url acct_signup %}"><b>Sign up</b></a>
     {% endif %}
+    | <a href="{% url show_cart %}">Show Cart</a>
 
     <h3>Manufacturers</h3>
     <ul>
@@ -32,6 +34,7 @@
     {% block menu %}{% endblock %}
     {% block content %}
     {% endblock %}
+    </div>
 </body>
 </html>
 
