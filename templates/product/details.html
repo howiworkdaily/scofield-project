@@ -34,7 +34,7 @@
     </form>
 
     <h2>Related Products</h2>
-    {% for related in product.related %}
+    {% for related in related %}
     <a href="{{ related.get_absolute_url }}">{{ related.name }}</a>: {{ related.get_price|currency }}<br />
     {% endfor %}
 

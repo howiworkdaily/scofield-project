@@ -27,6 +27,7 @@ class ProductModel(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ['date_added', 'name']
 
 class Product(ProductModel):
     """
@@ -54,11 +55,9 @@ class Product(ProductModel):
         if priceobj:
             return priceobj.price
 
-    def get_sku(self):
-        """
-        returns the product sku
-        """
-        return self.sku
+    class Meta:
+        verbose_name = 'Product'
+        verbose_name_plural = 'Products'
 
 
 class Price(models.Model):
@@ -73,6 +72,25 @@ class Price(models.Model):
     def __unicode__(self):
         return unicode(self.price)
 
+    class Meta:
+        verbose_name = 'Product Pricing'
+        verbose_name_plural = 'Product Pricing'
+
+class Discount(models.Model):
+    """
+    Product Quantity Discounts
+    """
+
+    product = models.ForeignKey(Product)
+    quantity_start = models.IntegerField(help_text='enter the start of the range')
+    quantity_end = models.IntegerField(help_text='enter the end of the range')
+    discount = models.DecimalField(max_digits=14, decimal_places=2, help_text='discount amount in dollars')
+    date_added = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        ordering = ['date_added']
+    
+
 class ProductLiterature(models.Model):
     """
     Any literature a product may have
@@ -82,6 +100,11 @@ class ProductLiterature(models.Model):
     document = models.FileField(upload_to='docs/')
     date_added = models.DateTimeField(default=datetime.now)
 
+    class Meta:
+        verbose_name = 'Product Literature'
+        verbose_name_plural = 'Product Literature'
+        ordering = ['date_added', 'title']
+
 class ProductImage(models.Model):
     """
     Images for a product
@@ -90,3 +113,8 @@ class ProductImage(models.Model):
     product = models.ForeignKey(Product)
     image = models.ImageField(upload_to='images/')
     date_added = models.DateTimeField(default=datetime.now)
+
+    class Meta:
+        verbose_name = 'Product Image'
+        verbose_name_plural = 'Product Images'
+        ordering = ['date_added']
