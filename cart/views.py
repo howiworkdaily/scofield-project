@@ -14,6 +14,9 @@ def add(request):
     """
     Add product to cart
     """
+
+    # TODO: Refactor this MESS!
+    
     if request.method == 'POST':
         next = request.POST.get("next")
         try:
