@@ -74,7 +74,6 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
-
 ROOT_URLCONF = 'urls'
 
 import os.path
