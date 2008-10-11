@@ -22,6 +22,9 @@ class Category(models.Model):
         return urlresolvers.reverse('scofield_category',
             kwargs={'category_slug': self.slug})
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"

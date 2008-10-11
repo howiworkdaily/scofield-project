@@ -118,3 +118,8 @@ class ProductImage(models.Model):
         verbose_name = 'Product Image'
         verbose_name_plural = 'Product Images'
         ordering = ['date_added']
+    
+
+
+
+

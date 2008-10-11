@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% load threadedcommentstags %}
-{% load scofield_tags %}
+{% load currency %}
 {% load thumbnail %}
 
 
@@ -15,10 +15,10 @@
         <img src="{{ thumb }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
     {% endfor %}
 
-    <h3>Product Literature</h3>
+    <h3>Product Document Downloads</h3>
     <ul>
     {% for doc in docs %}
-        <li><a href="{{ MEDIA_URL }}{{ doc.document }}">{{ doc.document }}</a></li>
+        <li><a href="{{ MEDIA_URL }}{{ doc.document }}">{{ doc.title }}</a></li>
     {% endfor %}
     </ul>
 

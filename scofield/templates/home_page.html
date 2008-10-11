@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load currency %}
+
+
+{% block content %}
+    <h2>Welcome to Scofield</h2>
+    {% for product in product %}
+    <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+    <p>{{ product.description }}</p>
+    MSRP: {{ product.msrp|currency }}<br />
+    Price: {{ product.get_price|currency }}<br />
+    {% endfor %}
+
+{% endblock %}
+

@@ -1,17 +1,18 @@
 {% extends "base.html" %}
+{% load currency %}
 
 {% block content %}
-    <h2>{{ category.name }}</h2>
+    <h2>{{ manufacturer.name }}</h2>
 
-    {% for product in category.get_products %}
+    {% for product in manufacturer.get_products %}
     <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
     <p>{{ product.description }}</p>
 
-    Price: {{ product.get_price }}<br />
+    Price: {{ product.get_price|currency }}<br />
 
-    <h3>Add purchase form here</h3>
 
     {% endfor %}
 
 {% endblock %}
+
 
