@@ -27,3 +27,8 @@ In my need to provide my clients with a 'simple' shopping cart that's agile enou
 - Rethink the cart (whether or not to use generic relations and/or sessions)
 - Add views for Wishlist
 - Add tests
+
+**References**
+
+- .. _20seven: http://20seven.org
+- .. _John Scofield: http://johnscofield.com
