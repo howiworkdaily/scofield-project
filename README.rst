@@ -14,6 +14,13 @@ In my need to provide my clients with a 'simple' shopping cart that's agile enou
 - Threaded Comments for products
 - Products model is a abstract class allowing you to easily extend the fields
 
+**Dependencies**
+
+- Django-Tagging
+- Django-ThreadedComments
+- Sorl-thumbnail
+- Django-Debug_toolbar (optional)
+
 **TODO:**
 
 - Add simple checkout
