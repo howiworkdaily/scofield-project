@@ -30,5 +30,8 @@ In my need to provide my clients with a 'simple' shopping cart that's agile enou
 
 **References**
 
-.. _20seven: http://20seven.org
-.. _John Scofield: http://johnscofield.com
+-  20seven_
+-  John Scofield_
+  
+_20seven: http://20seven.org
+_Scofield: http://johnscofield.com
