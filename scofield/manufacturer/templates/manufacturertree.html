@@ -1,0 +1,5 @@
+<ul>
+    {% for manufacturer in manufacturers %}
+        <li><a href="{{ manufacturer.get_absolute_url }}">{{ manufacturer.name }}</a></li>
+    {% endfor %}
+</ul>

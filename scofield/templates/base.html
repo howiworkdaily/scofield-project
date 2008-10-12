@@ -1,3 +1,5 @@
+{% load categorytree %}
+{% load manufacturertree %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
@@ -18,18 +20,10 @@
     | <a href="{% url show_cart %}">Show Cart</a>
 
     <h3>Manufacturers</h3>
-    <ul>
-        {% for manufacturer in manufacturers %}
-        <li><a href="{{ manufacturer.get_absolute_url }}">{{ manufacturer.name }}</a></li>
-        {% endfor %}
-    </ul>
+    {% manufacturertree %}
 
     <h3>Categories</h3>
-    <ul>
-        {% for category in categories %}
-        <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
-        {% endfor %}
-    </ul>
+    {% categorytree %} 
 
     {% block menu %}{% endblock %}
     {% block content %}

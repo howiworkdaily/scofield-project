@@ -64,7 +64,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-    "core.context_processors.dynamic_menus",
 )
 
 MIDDLEWARE_CLASSES = (

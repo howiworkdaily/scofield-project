@@ -6,5 +6,4 @@ def dynamic_menus(request):
     # TODO: move these into templatetags to reduce the number of queries
     return {
         'manufacturers': Manufacturer.objects.filter(published=True),
-        'categories': Category.objects.filter(published=True),
     }
