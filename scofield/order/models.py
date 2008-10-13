@@ -15,17 +15,17 @@ class Order(models.Model):
     phone = models.CharField('Phone Number', blank=False, max_length=30)
 
     # Billing Info
-    bstreet1 = models.CharField('Street', max_length=100)
+    bstreet1 = models.CharField('Street', blank=False, max_length=100)
     bstreet2 = models.CharField('Street', max_length=100, blank=True)
-    bstate = models.CharField(max_length=100, blank=True)
-    bcity = models.CharField(max_length=100)
-    bzip_code = models.CharField('Zip Code', max_length=25)
+    bstate = models.CharField(max_length=100, blank=False)
+    bcity = models.CharField(max_length=100, blank=False)
+    bzip_code = models.CharField('Zip Code', blank=False, max_length=25)
     # Shipping Info
-    sstreet1 = models.CharField('Street', max_length=100)
+    sstreet1 = models.CharField('Street', blank=False, max_length=100)
     sstreet2 = models.CharField('Street', max_length=100, blank=True)
-    sstate = models.CharField(max_length=100, blank=True)
-    scity = models.CharField(max_length=100)
-    szip_code = models.CharField('Zip Code', max_length=25)
+    sstate = models.CharField(max_length=100, blank=False)
+    scity = models.CharField(max_length=100, blank=False)
+    szip_code = models.CharField('Zip Code', blank=False, max_length=25)
     # Timestamp
     date_added = models.DateTimeField(default=datetime.now)
 

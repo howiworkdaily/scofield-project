@@ -8,8 +8,9 @@
 {% endif %}
 
 <h2>Checkout</h2>
-<form>
+<form action="" method="POST">
     {{ addressform.as_p }}
+    <input type="submit" name="submit" />
 </form>
 
 {% endblock %}

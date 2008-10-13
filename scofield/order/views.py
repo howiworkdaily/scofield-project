@@ -14,6 +14,12 @@ def checkout(request, template_name="order/checkout.html"):
     """
     loginform = LoginForm()
     addressform = AddressForm()
+
+    if request.method == 'POST':
+        addressform = AddressForm(request.user, request.POST)
+        if addressform.is_valid():
+            addressform.save()
+
     return render_to_response(template_name, {
         "loginform": loginform,
         "addressform": addressform,
