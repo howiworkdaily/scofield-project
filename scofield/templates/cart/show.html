@@ -14,7 +14,7 @@
         <form action="" method="post">    
         <tr>
             <td align="left">{{ product.sku }}</td>
-            <td align="left">{{ product.name }}</td>
+            <td align="left"><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></td>
             <td align="center">
                 <input type="text" size="2" name="quantity" value="{{ product.quantity }}" />
                 <input type="hidden" name="prod" value="{{ product.id }}" />
