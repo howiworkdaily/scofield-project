@@ -11,12 +11,18 @@
         <th>Quantity</th>
         <th align="left">Price</th>
         {% for product in product %}
+        <form action="" method="post">    
         <tr>
-            <td align="left">{{ product.get_sku }}</td>
+            <td align="left">{{ product.sku }}</td>
             <td align="left">{{ product.name }}</td>
-            <td align="center">{{ product.quantity }}</td>
+            <td align="center">
+                <input type="text" size="2" name="quantity" value="{{ product.quantity }}" />
+                <input type="hidden" name="prod" value="{{ product.id }}" />
+                <input type="submit" value="Update" />
+            </td>
             <td align="left">{{ product.get_price|currency }}</td>
         </tr>
+        </form>
         {% endfor %}
         <tr>
             <td colspan="2"></td>

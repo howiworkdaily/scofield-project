@@ -54,6 +54,15 @@ def show(request, template_name="cart/show.html"):
     """
     returns the current cart or not
     """
+    if request.method == 'POST':
+        qtyupdate = request.POST['quantity']
+        cartid = request.POST['prod']
+        cartitem = CartItem.objects.get(pk=cartid)
+        if qtyupdate == '0':
+            cartitem.delete()
+        else:
+            cartitem.quantity = qtyupdate
+            cartitem.save()
 
     if 'cart' in request.session:
         cart = Cart.objects.get(pk=request.session['cart'])
