@@ -54,6 +54,7 @@ def show(request, template_name="cart/show.html"):
     """
     returns the current cart or not
     """
+    total = 0
     if request.method == 'POST':
         qtyupdate = request.POST['quantity']
         cartid = request.POST['prod']
@@ -68,7 +69,6 @@ def show(request, template_name="cart/show.html"):
         cart = Cart.objects.get(pk=request.session['cart'])
         cartitems = CartItem.objects.filter(cart=cart)
         product = []
-        total = 0
         for c in cartitems:
             prod = Product.objects.get(pk=c.object_id)
             price = Price.objects.get(product=prod.id)
