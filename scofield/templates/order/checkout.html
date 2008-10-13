@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not user.is_authenticated %}
+<h2>Login</h2>
+   {{ loginform.as_p }}
+{% endif %}
+
+<h2>Checkout</h2>
+<form>
+    {{ addressform.as_p }}
+</form>
+
+{% endblock %}

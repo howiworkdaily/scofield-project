@@ -3,13 +3,18 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from utils import bad_or_missing
 
-from contact.models import *
+from account.models import *
 from cart.models import *
+from order.forms import AddressForm 
+from account.forms import LoginForm
 
-class checkout(request,template_name="order/checkout.html"):
+def checkout(request, template_name="order/checkout.html"):
     """
     Displays the customer info form for checkout
     """
+    loginform = LoginForm()
+    addressform = AddressForm()
     return render_to_response(template_name, {
-        "category": category, 
+        "loginform": loginform,
+        "addressform": addressform,
     }, context_instance=RequestContext(request)) 
