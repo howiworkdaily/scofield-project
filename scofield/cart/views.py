@@ -58,7 +58,7 @@ def show(request, template_name="cart/show.html"):
     if request.method == 'POST':
         qtyupdate = request.POST['quantity']
         cartid = request.POST['prod']
-        cartitem = CartItem.objects.get(pk=cartid)
+        cartitem = CartItem.objects.get(object_id=cartid)
         if qtyupdate == '0':
             cartitem.delete()
         else:
