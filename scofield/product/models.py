@@ -2,6 +2,7 @@ from django.db import models
 from django.core import urlresolvers
 from datetime import datetime
 from django.utils._decimal import Decimal
+from django.utils.translation import ugettext_lazy as _
 
 from scofield.category.models import *
 from scofield.manufacturer.models import Manufacturer
@@ -34,7 +35,7 @@ class Product(ProductModel):
     Product Model extends the abstract ProductModel
     """
 
-    msrp = models.DecimalField(max_digits=14, decimal_places=2, blank=True)
+    msrp = models.DecimalField(max_digits=14, decimal_places=2, blank=True, null=True)
     taxable = models.BooleanField(default=False)
     taxClass = models.ForeignKey(TaxClass, blank=True, null=True, help_text='If taxable, choose the type of tax')
     published = models.BooleanField(default=True)
@@ -114,16 +115,27 @@ class ProductLiterature(models.Model):
 class ProductImage(models.Model):
     """
     Images for a product
+    
     """
 
-    product = models.ForeignKey(Product)
+    product = models.ForeignKey(Product, related_name="images")
     image = models.ImageField(upload_to='images/')
-    date_added = models.DateTimeField(default=datetime.now)
+    caption = models.CharField(_("optional caption"), max_length=100, null=True, blank=True, help_text="And used as the alt text in the html.")
+    sortorder = models.IntegerField(_("sort order"), )
+    date_added = models.DateTimeField(default=datetime.now, editable=False)
+
+    def __unicode__(self):
+        if self.product:
+            return u"Image of product %s" % self.product.slug
+        elif self.caption:
+            return u"Image with caption \"%s\"" % self.caption
+        else:
+            return u"%s" % self.picture
 
     class Meta:
         verbose_name = 'Product Image'
         verbose_name_plural = 'Product Images'
-        ordering = ['date_added']
+        ordering = ['sortorder']
     
 
 

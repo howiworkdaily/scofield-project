@@ -1,9 +1,14 @@
 from models import *
+from forms import *
 from django.contrib import admin
 
-class ProductImage_Inline(admin.StackedInline):
+class ProductImage_Inline(admin.TabularInline):
     model = ProductImage
-    extra = 3
+    form = ProductImageForm
+    
+class ProductImageAdmin(admin.ModelAdmin):
+    model = ProductImage
+    form = ProductImageForm
 
 class ProductPrice_Inline(admin.StackedInline):
     model = Price
@@ -14,13 +19,19 @@ class ProductLiterature_Inline(admin.StackedInline):
     extra = 3
 
 class ProductOptions(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     inlines = [ProductImage_Inline, ProductLiterature_Inline, ProductPrice_Inline]
     list_display = ['name', 'sku', 'is_featured', 'published']
     search_fields = ['slug', 'sku', 'name', 'description']
+    
+    inlines = [
+        ProductImage_Inline,
+    ]
+
 
 admin.site.register(Price)
 admin.site.register(Product, ProductOptions)
-admin.site.register(ProductImage)
+admin.site.register(ProductImage, ProductImageAdmin)
 admin.site.register(ProductLiterature)
 admin.site.register(Discount)
 

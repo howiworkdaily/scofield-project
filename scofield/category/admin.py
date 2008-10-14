@@ -1,10 +1,10 @@
 from models import *
-from forms import FileUploadForm
+from forms import CategoryImageForm
 from django.contrib import admin
 
 class CategoryImageInline(admin.TabularInline):
     model = CategoryImage
-    form = FileUploadForm
+    form = CategoryImageForm
 
 class CategoryOptions(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
@@ -26,7 +26,7 @@ class CategoryOptions(admin.ModelAdmin):
     
 class CategoryImageAdmin(admin.ModelAdmin):
     model = CategoryImage
-    form = FileUploadForm
+    form = CategoryImageForm
         
 admin.site.register(CategoryImage, CategoryImageAdmin)
 admin.site.register(Category, CategoryOptions)

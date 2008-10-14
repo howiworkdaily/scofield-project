@@ -1,8 +1,8 @@
 from django import forms
 from scofield.core.forms import ImageUploadForm
-from models import * 
+from models import *
 
-class CategoryImageForm(ImageUploadForm):
+class ProductImageForm(ImageUploadForm):
     
     class Meta:
-        model = CategoryImage
+        model = ProductImage

@@ -58,7 +58,7 @@ class CategoryImage(models.Model):
 
     """
     category = models.ForeignKey(Category, null=True, blank=True, related_name="images")
-    picture = models.ImageField(upload_to="images",) 
+    image = models.ImageField(upload_to="images",) 
     caption = models.CharField(_("optional caption"), max_length=100, null=True, blank=True, help_text="And used as the alt text in the html.")
     sortorder = models.IntegerField(_("sort order"), )
 
