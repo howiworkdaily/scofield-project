@@ -3,16 +3,18 @@ from datetime import datetime
 from django.contrib.auth.models import User
 from scofield.product.models import Product
 
-
 class Wishlist(models.Model):
     """
-    Customer's Wishlist
+    Customer's Wishlist Base Class
     """
     customer = models.ForeignKey(User)
     date_added = models.DateTimeField(default=datetime.now)
+    name = models.CharField(max_length=20, default='General')
 
     class Meta:
         ordering = ['date_added', 'customer']
+        unique_together = ('customer','name')
+
 
 class WishlistItem(models.Model):
     """
