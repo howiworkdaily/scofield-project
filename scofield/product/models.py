@@ -34,7 +34,7 @@ class Product(ProductModel):
     Product Model extends the abstract ProductModel
     """
 
-    msrp = models.DecimalField(max_digits=14, decimal_places=2)
+    msrp = models.DecimalField(max_digits=14, decimal_places=2, blank=True)
     taxable = models.BooleanField(default=False)
     taxClass = models.ForeignKey(TaxClass, blank=True, null=True, help_text='If taxable, choose the type of tax')
     published = models.BooleanField(default=True)
