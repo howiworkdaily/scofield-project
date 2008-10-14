@@ -15,6 +15,8 @@ class ProductLiterature_Inline(admin.StackedInline):
 
 class ProductOptions(admin.ModelAdmin):
     inlines = [ProductImage_Inline, ProductLiterature_Inline, ProductPrice_Inline]
+    list_display = ['name', 'sku', 'is_featured', 'published']
+    search_fields = ['slug', 'sku', 'name', 'description']
 
 admin.site.register(Price)
 admin.site.register(Product, ProductOptions)
