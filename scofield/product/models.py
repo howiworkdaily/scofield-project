@@ -55,6 +55,12 @@ class Product(ProductModel):
         if priceobj:
             return priceobj.price
 
+    def get_image(self):
+        """ Return the product image """
+        image = ProductImage.objects.get(product__id=self.id)
+        if image:
+            return image.image
+
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
