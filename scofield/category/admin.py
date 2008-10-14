@@ -1,4 +1,4 @@
-from category.models import *
+from models import *
 from django.contrib import admin
 
 class CategoryOptions(admin.ModelAdmin):

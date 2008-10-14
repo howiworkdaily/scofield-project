@@ -3,9 +3,9 @@ from django.core import urlresolvers
 from datetime import datetime
 from django.utils._decimal import Decimal
 
-from category.models import *
-from manufacturer.models import Manufacturer
-from tax.models import TaxClass
+from scofield.category.models import *
+from scofield.manufacturer.models import Manufacturer
+from scofield.tax.models import TaxClass
 
 
 class ProductModel(models.Model):
