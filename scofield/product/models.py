@@ -8,6 +8,7 @@ from scofield.category.models import *
 from scofield.manufacturer.models import Manufacturer
 from scofield.tax.models import TaxClass
 
+from tagging.fields import TagField
 
 class ProductModel(models.Model):
 
@@ -41,6 +42,7 @@ class Product(ProductModel):
     published = models.BooleanField(default=True)
     is_featured = models.BooleanField('Is Featured Product', default=False)
     related_products = models.ManyToManyField('self', blank=True, null=True, related_name='related_products')
+    tags = TagField()
 
     def __unicode__(self):
         return self.name
