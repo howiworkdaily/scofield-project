@@ -19,9 +19,11 @@ class ProductModel(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False, help_text='Product Name')
     slug = models.SlugField(max_length=210, null=False, blank=False, help_text='Used for URLs, auto-generated from name if blank', unique=True)
     sku = models.CharField(max_length=100, null=True, blank=True, help_text='Product SKU or Part Number')
-    description = models.TextField()
+    short_description = models.TextField(_('short description'), blank=True, null=True)
+    description = models.TextField(_('description'), blank=True, null=True)
     category = models.ManyToManyField(Category, blank=False, null=False)
     manufacturer = models.ForeignKey(Manufacturer, blank=True, null=True)
+    tags = TagField()
 
     #timestamps
     date_added = models.DateTimeField(default=datetime.now)
@@ -30,6 +32,9 @@ class ProductModel(models.Model):
     class Meta:
         abstract = True
         ordering = ['date_added', 'name']
+        
+    def save(self):
+        self.date_updated = datetime.now()
 
 class Product(ProductModel):
     """
@@ -42,7 +47,6 @@ class Product(ProductModel):
     published = models.BooleanField(default=True)
     is_featured = models.BooleanField('Is Featured Product', default=False)
     related_products = models.ManyToManyField('self', blank=True, null=True, related_name='related_products')
-    tags = TagField()
 
     def __unicode__(self):
         return self.name
@@ -68,6 +72,8 @@ class Product(ProductModel):
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
 
+    def save(self):
+        super(Product, self).save()
 
 class Price(models.Model):
 
